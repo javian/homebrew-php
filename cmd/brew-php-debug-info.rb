@@ -7,9 +7,6 @@ system_php_output = IO.popen("env php -r 'echo phpversion();'", :err=>[:child, :
 system_php = system_php_output.read
 system_php_output.close
 
-#system_php = `env php -r 'echo phpversion();'`
-
-
 system_gcc_output = IO.popen("env gcc -v", :err=>[:child, :out]) 
 system_gcc = system_gcc_output.read
 system_gcc_output.close
