@@ -21,7 +21,7 @@ class Php54Propro < AbstractPhp54Extension
     safe_phpize
     system "./configure", "--prefix=#{prefix}", phpconfig
     system "make"
-    include.install %w[php_propro.h]
+    include.install %w[php_propro.h src/php_propro_api.h]
     prefix.install "modules/propro.so"
     write_config_file if build.with? "config-file"
   end
