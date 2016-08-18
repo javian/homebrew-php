@@ -7,7 +7,7 @@ class Php53Solr < AbstractPhp53Extension
   url "https://pecl.php.net/get/solr-2.4.0.tgz"
   sha256 "22865dafb76fc5839e84a5bd423bb37d5062883e5dfc4d064b43129ac9f2752c"
   head "https://git.php.net/repository/pecl/search_engine/solr.git"
-  
+
   bottle do
     cellar :any_skip_relocation
     sha256 "391ac946647d34b5837cb1ab8772394dd34d2e1d562e7e65bcef9cf68f342c1d" => :el_capitan
