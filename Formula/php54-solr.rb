@@ -7,7 +7,7 @@ class Php54Solr < AbstractPhp54Extension
   url "https://pecl.php.net/get/solr-2.4.0.tgz"
   sha256 "22865dafb76fc5839e84a5bd423bb37d5062883e5dfc4d064b43129ac9f2752c"
   head "https://git.php.net/repository/pecl/search_engine/solr.git"
-  
+
   bottle do
     cellar :any_skip_relocation
     sha256 "c47e61bd9932fabc26ff765e541f291f332e9486daeb81f1aad974a766b3fe51" => :el_capitan
