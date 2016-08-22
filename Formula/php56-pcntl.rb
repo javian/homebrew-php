@@ -8,7 +8,7 @@ class Php56Pcntl < AbstractPhp56Extension
   sha256 PHP_CHECKSUM[:sha256]
   version PHP_VERSION
   revision 1
-  
+
   bottle do
   end
 
