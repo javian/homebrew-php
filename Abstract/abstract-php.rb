@@ -176,6 +176,9 @@ INFO
   end
 
   def install_args
+    # prevent php from hardcoding sed path from superenv
+    ENV["SED"] = "sed" 
+
     args = [
       "--prefix=#{prefix}",
       "--localstatedir=#{var}",
