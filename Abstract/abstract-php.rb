@@ -159,7 +159,7 @@ INFO
   end
 
   def apache_apxs
-    if build.with? 'homebrew-apxs'
+    if build.with?('homebrew-apxs') || MacOS.version == :sierra
       ['sbin', 'bin'].each do |dir|
         if File.exist?(location = "#{HOMEBREW_PREFIX}/#{dir}/apxs")
           return location
