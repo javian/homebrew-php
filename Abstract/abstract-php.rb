@@ -43,8 +43,8 @@ class AbstractPhp < Formula
     depends_on 'readline'
 
     # macOS Sierra has removed apxs and requires Apache httpd to be installed
-    if MacOS.version == :sierra && !build.include?('without-apache')
-      if build.include?('with-httpd22')
+    if MacOS.version == :sierra && build.with?('apache')
+      if build.with?('httpd22')
         depends_on 'homebrew/apache/httpd22'
       else
         depends_on 'homebrew/apache/httpd24' 
@@ -85,7 +85,7 @@ class AbstractPhp < Formula
     end
     option 'with-thread-safety', 'Build with thread safety'
     option 'without-apache', 'Disable building of shared Apache 2.0 Handler module'
-    option 'with-httpd22', 'Force use of httpd 2.2' if MacOS.version == :sierra
+    option 'with-httpd22', 'Build PHP against Apache httpd 2.2' if MacOS.version == :sierra
     option 'without-bz2', 'Build without bz2 support'
     option 'without-fpm', 'Disable building of the fpm SAPI executable'
     option 'without-ldap', 'Build without LDAP support'
@@ -186,6 +186,9 @@ INFO
   end
 
   def install_args
+    # Prevent PHP from harcoding sed shim path
+    ENV["lt_cv_path_SED"] = "sed"
+
     args = [
       "--prefix=#{prefix}",
       "--localstatedir=#{var}",
