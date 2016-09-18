@@ -42,6 +42,15 @@ class AbstractPhp < Formula
     depends_on 'unixodbc' unless build.include?('without-unixodbc')
     depends_on 'readline'
 
+    # macOS Sierra has removed apxs and requires Apache httpd to be installed
+    if MacOS.version == :sierra && !build.include?('without-apache')
+      if build.include?('with-httpd22')
+        depends_on 'homebrew/apache/httpd22'
+      else
+        depends_on 'homebrew/apache/httpd24' 
+      end
+    end
+
     # ssl
     if build.include?('with-homebrew-libressl')
       depends_on 'libressl' 
@@ -76,6 +85,7 @@ class AbstractPhp < Formula
     end
     option 'with-thread-safety', 'Build with thread safety'
     option 'without-apache', 'Disable building of shared Apache 2.0 Handler module'
+    option 'with-httpd22', 'Force use of httpd 2.2' if MacOS.version == :sierra
     option 'without-bz2', 'Build without bz2 support'
     option 'without-fpm', 'Disable building of the fpm SAPI executable'
     option 'without-ldap', 'Build without LDAP support'
