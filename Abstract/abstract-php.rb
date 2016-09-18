@@ -43,7 +43,7 @@ class AbstractPhp < Formula
     depends_on 'readline'
 
     # macOS Sierra has removed apxs and requires Apache httpd to be installed
-    if MacOS.version == :sierra && build.with?('apache')
+    if MacOS.version == :sierra && !build.include?('without-apache')
       if build.with?('httpd22')
         depends_on 'homebrew/apache/httpd22'
       else
