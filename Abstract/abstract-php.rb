@@ -42,14 +42,8 @@ class AbstractPhp < Formula
     depends_on 'unixodbc' unless build.include?('without-unixodbc')
     depends_on 'readline'
 
-    # macOS Sierra has removed apxs and requires Apache httpd to be installed
-    if MacOS.version == :sierra && !build.include?('without-apache')
-      if build.with?('httpd22')
-        depends_on 'homebrew/apache/httpd22'
-      else
-        depends_on 'homebrew/apache/httpd24' 
-      end
-    end
+    depends_on 'homebrew/apache/httpd24' if build.with?('apache')
+    depends_on 'homebrew/apache/httpd22' if build.with?('apache22')
 
     # ssl
     if build.include?('with-homebrew-libressl')
@@ -67,6 +61,8 @@ class AbstractPhp < Formula
       raise "Cannot specify more than one CGI executable to build."
     end
 
+    option 'with-apache', 'Enable building of shared Apache 2.4 Handler module'
+    option 'with-apache22', 'Enable building of shared Apache 2.2 Handler module'
     deprecated_option "homebrew-apxs" => "with-homebrew-apxs"
     option 'with-homebrew-apxs', 'Build against apxs in Homebrew prefix'
     option 'with-cgi', 'Enable building of the CGI executable (implies --without-fpm)'
@@ -84,8 +80,6 @@ class AbstractPhp < Formula
         option "with-phpdbg", "Enable building of the phpdbg SAPI executable"
     end
     option 'with-thread-safety', 'Build with thread safety'
-    option 'without-apache', 'Disable building of shared Apache 2.0 Handler module'
-    option 'with-httpd22', 'Build PHP against Apache httpd 2.2' if MacOS.version == :sierra
     option 'without-bz2', 'Build without bz2 support'
     option 'without-fpm', 'Disable building of the fpm SAPI executable'
     option 'without-ldap', 'Build without LDAP support'
@@ -241,7 +235,7 @@ INFO
     end
 
     # Build Apache module by default
-    unless build.without? 'apache'
+    if build.with?('apache') || build.with?('apache22')
       args << "--with-apxs2=#{apache_apxs}"
       args << "--libexecdir=#{libexec}"
     end
@@ -437,7 +431,7 @@ INFO
   def caveats
     s = []
 
-    unless build.without? 'apache'
+    if build.with?('apache') || build.with?('apache22') 
       if MacOS.version <= :leopard
         s << <<-EOS.undent
           For 10.5 and Apache:
