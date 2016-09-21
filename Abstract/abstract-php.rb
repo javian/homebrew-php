@@ -559,6 +559,9 @@ INFO
 
         Please note that the plist was called 'homebrew-php.josegonzalez.php#{php_version.gsub('.','')}.plist' in old versions
         of this formula.
+
+        With the release of macOS Sierra the Apache module is now not built by default. If you want to build it on your system
+        you have to install php with the --with-apache option. See  brew options php#{php_version_path}  for more details.
       EOS
     end
 
