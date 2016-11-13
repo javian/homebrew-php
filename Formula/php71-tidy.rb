@@ -13,7 +13,7 @@ class Php71Tidy < AbstractPhp71Extension
   url PHP_SRC_TARBALL
   sha256 PHP_CHECKSUM[:sha256]
   version PHP_VERSION
-  revision 4
+  revision 5
 
   depends_on "tidy-html5"
 
