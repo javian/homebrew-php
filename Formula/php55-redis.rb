@@ -6,8 +6,8 @@ class Php55Redis < AbstractPhp55Extension
   homepage "https://github.com/phpredis/phpredis"
   url "https://github.com/phpredis/phpredis/archive/2.2.8.tar.gz"
   sha256 "a7c6e2eef70bd8449bab819c8f01d951fcd86ce0417e03675445040236ed4dda"
-  head "https://github.com/phpredis/phpredis.git"
   revision 1
+  head "https://github.com/phpredis/phpredis.git"
 
   bottle do
     cellar :any_skip_relocation
