@@ -22,7 +22,6 @@ class Php55Igbinary < AbstractPhp55Extension
     ENV.universal_binary if build.universal?
 
     safe_phpize
-    rm "apc_serializer.h"
     system "./configure", "--prefix=#{prefix}",
                           phpconfig
     system "make"

@@ -11,8 +11,6 @@ class Php70Igbinary < AbstractPhp70Extension
   depends_on "igbinary" => :build
 
   def install
-    Dir.chdir "igbinary-#{version}" unless build.head?
-
     ENV.universal_binary if build.universal?
 
     safe_phpize
