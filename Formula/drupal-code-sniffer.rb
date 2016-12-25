@@ -7,6 +7,7 @@ class DrupalCodeSniffer < Formula
   version "8.x-2.9"
   sha256 "c96a2bb24b1b6afa69ed51008b0c3c3aed8dd5148d2437ae963011791c161047"
   head "http://git.drupal.org/project/coder.git", :branch => "8.x-2.x"
+  revision 1
 
   bottle do
     cellar :any_skip_relocation
