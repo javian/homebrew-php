@@ -56,7 +56,7 @@ class DrupalCodeSniffer < Formula
   end
 
   def caveats
-    s = <<-EOS.undent
+    <<-EOS.undent
     Drupal Coder Sniffer is linked to "#{phpcs_standards+drupal_standard_name}".
 
     You can verify whether PHP Code Sniffer has detected the standard by running:
