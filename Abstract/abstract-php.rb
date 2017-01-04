@@ -366,7 +366,11 @@ INFO
 
   def _install
     system "./buildconf", "--force" if build.head?
-    system "./configure", *install_args()
+    # Pass custom includedir option to pass homebrew audit check
+    system "./configure", *install_args(), "--includedir=" + prefix/"homebrew_include"
+
+    # Move include directory to match includedir option and pass homebrew CI bot audit check
+    File.rename "include", "homebrew_include"
 
     if build.with?('httpd24') || build.with?('httpd22')
       # Use Homebrew prefix for the Apache libexec folder
