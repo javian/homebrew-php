@@ -213,4 +213,8 @@ class Php70Opcache < AbstractPhp70Extension
       apc.cache_by_default = false
     EOS
   end
+
+  test do
+    shell_output("php -r '(extension_loaded(\"Zend OPCache\"))?exit(0):exit(1);'")
+  end
 end
