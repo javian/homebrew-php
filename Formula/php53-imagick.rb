@@ -6,7 +6,7 @@ class Php53Imagick < AbstractPhp53Extension
   homepage "https://pecl.php.net/package/imagick"
   url "https://pecl.php.net/get/imagick-3.3.0.tgz"
   sha256 "bd69ebadcedda1d87592325b893fa78a5710a0ca7307f8e18c5e593949b1db2d"
-  revision 6
+  revision 7
 
   bottle do
     sha256 "fe30a14a3c8d3582a8f192d3abb6af71abe434cad63dc7405926c61b88b2368a" => :sierra
