@@ -17,6 +17,7 @@ class Php53Dmtx < AbstractPhp53Extension
   end
 
   depends_on "libdmtx"
+  depends_on "imagemagick@6"
   depends_on "php53-imagick"
   depends_on "pkg-config" => :build
 
@@ -25,6 +26,7 @@ class Php53Dmtx < AbstractPhp53Extension
 
     safe_phpize
     system "./configure", "--prefix=#{prefix}",
+                          "--with-dmtx-imagemagick-dir=#{Formula["imagemagick@6"].opt_prefix}",
                           phpconfig
     system "make"
     prefix.install %w[modules/dmtx.so]
