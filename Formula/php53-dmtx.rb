@@ -23,10 +23,10 @@ class Php53Dmtx < AbstractPhp53Extension
 
   def install
     ENV.universal_binary if build.universal?
+    ENV["PHP_IMAGICK"] = Formula["imagemagick@6"].opt_prefix
 
     safe_phpize
     system "./configure", "--prefix=#{prefix}",
-                          "--with-dmtx-imagemagick-dir=#{Formula["imagemagick@6"].opt_prefix}",
                           phpconfig
     system "make"
     prefix.install %w[modules/dmtx.so]
