@@ -21,7 +21,7 @@ class Php71Pcs < AbstractPhp71Extension
 
     system "./configure", *args
     system "make"
-    prefix.install "modules/pcs.so"
+    prefix.install "modules/pcs.so", "client.h"
     write_config_file if build.with? "config-file"
   end
 end
