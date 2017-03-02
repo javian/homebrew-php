@@ -18,6 +18,8 @@ class Terminus < Formula
     sha256 "c4343d906f3082c3d85ac2a6764ad90e560a585a7ce4a989360ab37cb575a3ff" => :yosemite
   end
 
+  conflicts_with "terminus@0.13", :because => "it provides a binary with an identical name"
+
   depends_on PhpMetaRequirement
 
   def install
