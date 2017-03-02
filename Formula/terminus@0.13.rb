@@ -19,7 +19,7 @@ class TerminusAT013 < Formula
     sha256 "384663c71dfe8a1f5f6b10855d5b81740b92b91b0d79add013522c4f90800358" => :yosemite
   end
 
-  conflicts_with "terminus", :because => "it provides a binary with an identical name"
+  keg_only :versioned_formula
 
   depends_on PhpMetaRequirement
 
