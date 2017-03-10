@@ -11,6 +11,7 @@ class TerminusAT013 < Formula
   url "https://github.com/pantheon-systems/terminus/archive/0.13.6.tar.gz"
   sha256 "c71a0983edf93879e14da00f08128a0a47d493d4aaf4ccf58a86c3f6b5e74c95"
   head "https://github.com/pantheon-systems/terminus.git"
+  revision 1
 
   bottle do
     cellar :any_skip_relocation
