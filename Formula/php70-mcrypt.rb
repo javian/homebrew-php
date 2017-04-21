@@ -17,6 +17,7 @@ class Php70Mcrypt < AbstractPhp70Extension
   version PHP_VERSION
 
   depends_on "mcrypt"
+  depends_on "libtool" => :run
 
   def install
     Dir.chdir "ext/mcrypt"
