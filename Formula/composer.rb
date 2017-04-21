@@ -14,11 +14,11 @@ class Composer < AbstractPhpPhar
     sha256 "22f5ec8b978e9edf5ba70407b2757a9a4ceb1bd5db78a85aceb15bf66e78a888" => :yosemite
   end
 
+  depends_on PharRequirement
+
   test do
     system "#{bin}/composer", "--version"
   end
-
-  depends_on PharRequirement
 
   # The default behavior is to create a shell script that invokes the phar file.
   # Other tools, at least Ansible, expect the composer executable to be a PHP
