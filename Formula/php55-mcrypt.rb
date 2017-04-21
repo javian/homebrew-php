@@ -21,8 +21,6 @@ class Php55Mcrypt < AbstractPhp55Extension
   def install
     Dir.chdir "ext/mcrypt"
 
-    ENV.universal_binary if build.universal?
-
     safe_phpize
     system "./configure", "--prefix=#{prefix}",
                           phpconfig,
@@ -33,11 +31,3 @@ class Php55Mcrypt < AbstractPhp55Extension
     write_config_file if build.with? "config-file"
   end
 end
-
-
-
-
-
-
-
-

@@ -22,8 +22,6 @@ class Php70Mcrypt < AbstractPhp70Extension
   def install
     Dir.chdir "ext/mcrypt"
 
-    ENV.universal_binary if build.universal?
-
     safe_phpize
     system "./configure", "--prefix=#{prefix}",
                           phpconfig,
