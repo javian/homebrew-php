@@ -1,7 +1,6 @@
 require File.expand_path("../../Abstract/abstract-php-phar", __FILE__)
 
 class Composer < AbstractPhpPhar
-  init
   desc "Dependency Manager for PHP"
   homepage "https://getcomposer.org"
   url "https://getcomposer.org/download/1.4.1/composer.phar"
@@ -18,6 +17,8 @@ class Composer < AbstractPhpPhar
   test do
     system "#{bin}/composer", "--version"
   end
+
+  depends_on PharRequirement
 
   # The default behavior is to create a shell script that invokes the phar file.
   # Other tools, at least Ansible, expect the composer executable to be a PHP
