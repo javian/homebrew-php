@@ -40,7 +40,7 @@ class Composer < AbstractPhpPhar
     caveats = <<-EOS
     composer no longer depends on the homebrew php Formulas since the last couple of macOS releases
     contains a php version compatible with composer. If this has been part of your workflow 
-    previously then please make the appropriate changes and  brew install php71  or other appropriate
+    previously then please make the appropriate changes and `brew install php71` or other appropriate
     Homebrew PHP version.
     EOS
   end
