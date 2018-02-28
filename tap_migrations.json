@@ -1,5 +1,5 @@
 {
   "phpenv": "homebrew/boneyard",
   "phpsh": "homebrew/boneyard",
-  "php72": "homebrew/core/php"
+  "php72": "homebrew/core"
 }
